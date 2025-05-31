@@ -87,6 +87,21 @@ app.post("/addTask", (req, res)=>{
     })
 })
 
+app.delete("/deleteTask/:id", (req, res)=>{
+
+    let taskId = +req.params.id;
+    //console.log(taskId)
+    let newTaskArr = taskArr.filter((task)=>{
+        return task.id != taskId
+    })
+    //console.log(newTaskArr)
+    taskArr = newTaskArr
+    res.json({
+        message: "Task Deleted",
+        result: taskArr
+    })
+})
+
 
 
 app.listen(PORT, ()=>{
